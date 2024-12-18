@@ -5,15 +5,15 @@ import {useEffect, useState} from "react";
 import ChangePasswordForm from "../(auth)/ChangePassword/Component/ChangePasswordForm";
 import {ListOrdered, LogOut, Settings} from "lucide-react";
 
-import { useRouter} from "next/navigation";
-import { useLogin } from "@/components/context/LoginContext";
+import {useRouter} from "next/navigation";
+import {useLogin} from "@/components/context/LoginContext";
 
 const Profile = () => {
      const [isLoggedIn, setIsLoggedIn] = useState(false);
 
      const router = useRouter();
 
-     const {logout}=useLogin()
+     const {logout} = useLogin();
 
      useEffect(() => {
           const token = localStorage.getItem("accessToken");
@@ -22,9 +22,8 @@ const Profile = () => {
 
      const handleLogout = () => {
           logout();
-          router.push('/');  // Redirect to home page after logout
-        };
-   
+          router.push("/"); // Redirect to home page after logout
+     };
 
      return (
           <div className=" w-full max-w-[60%] m-auto grid grid-cols-4 gap-10 justify-center items-center  font-serif ">
