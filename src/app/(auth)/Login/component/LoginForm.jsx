@@ -83,9 +83,9 @@ const LoginPage = ({
             {...register("email", {
               required: "Email is required",
               pattern: {
-                value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
-                message: "Invalid email address",
-              },
+                value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
+                message: "Password must have at least one uppercase, one lowercase letter, one number, one special character and 8 characters long",
+           },
             })}
             className="border p-2 w-full"
             placeholder="Enter your email"
