@@ -8,8 +8,9 @@ import LoginPage from "@/app/(auth)/Login/component/LoginForm";
 import RegisterModal from "@/app/(auth)/Register/Component/RegisterForm";
 import ForgetPasswordModal from "@/app/(auth)/ForgetPassword/page";
 import VerifyModal from "@/app/(auth)/VerifyCode/page";
-import UpdatePasswordForm from "@/app/(auth)/UpdatePassword/Component/UpdatePasswordForm";
+// import UpdatePasswordForm from "@/app/(auth)/UpdatePassword/Component/UpdatePasswordForm";
 import Link from "next/link";
+import UpdatePasswordForm from "@/app/(auth)/UpdatePassword/Component/UpdatePassWordForm";
 
 const Hero = () => {
   const [isLoginOpen, setIsLoginOpen] = useState(false);
