@@ -7,6 +7,8 @@ import {Download} from "lucide-react";
 import {Button} from "../ui/button";
 import {useEffect, useState} from "react";
 import Swal from "sweetalert2";
+import {useDogtagContext} from "../context/DogtagContext";
+import {useRouter} from "next/navigation";
 
 // Helper function to check if an object has at least one non-empty value
 const hasNonEmptyValues = (obj) => {
@@ -15,6 +17,8 @@ const hasNonEmptyValues = (obj) => {
 
 const DogtagPreview = () => {
      const {formData} = useFormContext();
+     const router = useRouter();
+     const {setPreviews} = useDogtagContext();
 
      const [buynow, setBuynow] = useState(false);
 
@@ -46,22 +50,54 @@ const DogtagPreview = () => {
           ) {
                setBuynow(true);
           } else {
+               
                setBuynow(false);
           }
      }, [formData]);
 
-     const handleBuyNowSubmit = () => {
-          Swal.fire({
-               title: "Sorry",
-               text: "It’s still in development. Please try something else",
-               icon: "question",
-          });
+     const handleBuyNowSubmit = async () => {
+          try {
+               const dogtag1 = document.getElementById("dogtag-1");
+               const dogtag2 = document.getElementById("dogtag-2");
+               const previews = [];
+
+               if (dogtag1) {
+                    const canvas1 = await html2canvas(dogtag1);
+                    previews.push(canvas1.toDataURL("image/png"));
+               }
+
+               if (dogtag2) {
+                    const canvas2 = await html2canvas(dogtag2);
+                    previews.push(canvas2.toDataURL("image/png"));
+               }
+
+               if (previews.length) {
+                    // Save to context or global state
+                    setPreviews(previews);
+
+                    // Navigate to the billing details page
+                    router.push("/CustomOrder");
+               } else {
+                    Swal.fire({
+                         title: "No Data",
+                         text: "Please create a dog tag before proceeding.",
+                         icon: "warning",
+                    });
+               }
+          } catch (error) {
+               Swal.fire({
+                    title: "Error",
+                    text: "Failed to process the Dog Tags. Please try again later.",
+                    icon: "error",
+               });
+          }
      };
 
      return (
           <div className=" font-serif">
                <CustomHeadline title="My Dog Tag" />
 
+               {/* --------Dogtags Preview----------- */}
                <div className="grid  sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 2xl:grid-cols-2 justify-center items-center w-full 2xl:max-w-[50%] mx-auto p-6 sm:p-8 md:p-10 lg:p-10 2xl:gap-20">
                     {/* div 1 */}
                     <div

@@ -8,6 +8,7 @@ import ScrollToTop from "@/components/shared/ScrollTopButton";
 import { ProductProvider } from "@/components/context/ProductContext";
 import { Toaster } from "sonner";
 import { LoginProvider } from "@/components/context/LoginContext";
+import { DogtagProvider } from "@/components/context/DogtagContext";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -33,16 +34,19 @@ export default function RootLayout({ children }) {
       >
         <main className="text-white">
           {/* Include the ProgressBar */}
-          <ProgressBar />
-          <LoginProvider>
-            <ProductProvider>
-              {/* Hero Section */}
-              <Hero />
-              {/* Form Context Provider */}
-              <FormProvider>{children}</FormProvider>
-              <ScrollToTop />
-            </ProductProvider>
-          </LoginProvider>
+                                  <ProgressBar />
+            <DogtagProvider>
+            <LoginProvider>
+                   <ProductProvider>
+                        {/* Hero Section */}
+                             <Hero />
+                         {/* Form Context Provider */}
+                                <FormProvider>{children}</FormProvider>
+                                 {/* Scroll to Top */}
+                             <ScrollToTop />
+                  </ProductProvider>
+             </LoginProvider>
+            </DogtagProvider>
 
           {/* Footer */}
           <Footer />
