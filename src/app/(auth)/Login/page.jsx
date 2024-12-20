@@ -3,11 +3,12 @@
 import React, { useState } from "react";
 import { redirect, useRouter } from "next/navigation";
 
-import RegisterModal from "../Register/Component/RegisterForm";
+import UpdatePasswordForm from "../UpdatePassword/Component/UpdatePassWordForm";
 import LoginPage from "./component/LoginForm";
+import RegisterModal from "../Register/Component/RegisterForm";
 import ForgetPasswordModal from "../ForgetPassword/page";
 import VerifyModal from "../VerifyCode/page";
-import UpdatePasswordForm from "../UpdatePassword/Component/UpdatePasswordForm";
+
 
 const Page = () => {
   const [isLoginOpen, setIsLoginOpen] = useState(true);

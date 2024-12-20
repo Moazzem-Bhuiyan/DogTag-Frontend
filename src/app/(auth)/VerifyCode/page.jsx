@@ -1,8 +1,10 @@
+"use client"
 import React from "react";
 
 import { Modal } from "antd";
 import { VerifyCodeForm } from "./component/VerifyCodeForm";
 import { useForm } from "react-hook-form";
+
 
 
 const VerifyModal = ({ isOpen, onClose, OnupdatePassClick }) => {
