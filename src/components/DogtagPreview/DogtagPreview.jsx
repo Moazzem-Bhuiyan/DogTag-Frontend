@@ -62,7 +62,7 @@ const DogtagPreview = () => {
           <div className=" font-serif">
                <CustomHeadline title="My Dog Tag" />
 
-               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 2xl:grid-cols-2 justify-center items-center w-full 2xl:max-w-[50%] mx-auto p-6 sm:p-8 md:p-10 lg:p-10 2xl:gap-20">
+               <div className="grid  sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 2xl:grid-cols-2 justify-center items-center w-full 2xl:max-w-[50%] mx-auto p-6 sm:p-8 md:p-10 lg:p-10 2xl:gap-20">
                     {/* div 1 */}
                     <div
                          id="dogtag-1"
