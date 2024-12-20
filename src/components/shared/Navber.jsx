@@ -9,6 +9,23 @@ const Navber = ({onLoginClick}) => {
      const {isLoggedIn, setIsLoggedIn} = useLogin();
      const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
+     const [isFixed, setIsFixed] = useState(false);
+
+     useEffect(() => {
+          const handleScroll = () => {
+               if (window.scrollY >= 480) {
+                    setIsFixed(true);
+               } else {
+                    setIsFixed(false);
+               }
+          };
+
+          window.addEventListener("scroll", handleScroll);
+          return () => {
+               window.removeEventListener("scroll", handleScroll);
+          };
+     }, []);
+
      useEffect(() => {
           const token = localStorage.getItem("accessToken");
           if (token) {
@@ -25,9 +42,15 @@ const Navber = ({onLoginClick}) => {
      ];
 
      return (
-          <div className="w-full font-serif">
+          <div
+               className={` bg-main w-full font-serif ${
+                    isFixed ? "fixed top-0 left-0 w-full z-50" : "relative"
+               }  `}>
                {/* Desktop Navbar */}
-               <div className="hidden md:flex flex-col md:flex-row justify-center items-center md:gap-10 lg:gap-40 w-full p-4">
+               <div
+                    className={` bg-main hidden md:flex flex-col md:flex-row justify-center items-center md:gap-10 lg:gap-40 w-full p- ${
+                         isFixed ? "fixed top-0 left-0 w-full z-50" : "relative"
+                    }  `}>
                     {Navlink.map((item, index) => (
                          <div
                               key={index}
