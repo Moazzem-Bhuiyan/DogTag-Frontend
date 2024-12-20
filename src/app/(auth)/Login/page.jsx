@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import { redirect, useRouter } from "next/navigation";
 
-import UpdatePasswordForm from "../UpdatePassword/Component/UpdatePassWordForm";
+import UpdatePassWordForm from "../UpdatePassword/Component/UpdatePassWordForm";
 import LoginPage from "./component/LoginForm";
 import RegisterModal from "../Register/Component/RegisterForm";
 import ForgetPasswordModal from "../ForgetPassword/page";
@@ -83,7 +83,7 @@ const Page = () => {
           onClose={handleCloseAll}
           OnupdatePassClick={handleUpdatePassword}
         />
-        <UpdatePasswordForm
+        <UpdatePassWordForm
           isOpen={isupdatepasswordOpen}
           onClose={handleCloseAll}
         />

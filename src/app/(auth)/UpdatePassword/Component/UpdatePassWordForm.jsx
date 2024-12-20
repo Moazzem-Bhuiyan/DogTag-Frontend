@@ -8,7 +8,7 @@ import axios from "axios";
 import { toast } from "sonner";
 import EyeIconInverse from "@/components/EyeConinverse/EyeConinverse";
 
-const UpdatePasswordForm = ({ isOpen, onClose, onpenVerifyCodeclick }) => {
+const UpdatePassWordForm = ({ isOpen, onClose,  }) => {
   const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [token, setToken] = useState(""); // State to store the token
@@ -148,4 +148,4 @@ const UpdatePasswordForm = ({ isOpen, onClose, onpenVerifyCodeclick }) => {
   );
 };
 
-export default UpdatePasswordForm;
+export default UpdatePassWordForm;

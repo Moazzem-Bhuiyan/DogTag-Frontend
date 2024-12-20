@@ -1,10 +1,10 @@
 import React from "react";
-import UpdatePasswordForm from "./Component/UpdatePasswordForm";
+import UpdatePassWordForm from "./Component/UpdatePassWordForm";
 
 const page = () => {
   return (
     <div>
-      <UpdatePasswordForm />
+      <UpdatePassWordForm />
     </div>
   );
 };
