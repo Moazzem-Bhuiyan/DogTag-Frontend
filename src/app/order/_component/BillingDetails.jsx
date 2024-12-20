@@ -373,6 +373,7 @@ const BillingDetails = () => {
 
   return (
     <div className="p-8 grid grid-cols-1 xl:grid-cols-2  gap-16 w-full md:max-w-[60%] mx-auto font-serif">
+      
       {/* Right Section: Billing Form */}
 
       <Tabs
