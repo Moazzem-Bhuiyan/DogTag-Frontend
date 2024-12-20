@@ -49,7 +49,7 @@ const HomeCard = () => {
                <div className=" grid xl:grid-cols-3 lg:grid-cols-2 gap-10 justify-center items-center w-full max-w-[80%]  mx-auto mt-20 ">
                     {card.map((card, index) => (
                          <div
-                              className=" bg-main p-12 px-12 space-y-5 rounded-md max-w-sm mx-auto h-auto shadow-none transition-shadow duration-300 cursor-pointer hover:shadow-lg hover:shadow-white "
+                              className=" bg-main p-12 px-12 space-y-5 rounded-md max-w-sm mx-auto  shadow-none transition-shadow duration-300 cursor-pointer hover:shadow-lg hover:shadow-white h-[300px] "
                               key={index}>
                               <div className=" flex justify-center items-center ">
                                    <Image src={card?.img} alt="cardImg" />
