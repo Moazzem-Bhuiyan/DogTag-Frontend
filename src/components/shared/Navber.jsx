@@ -127,7 +127,7 @@ const Navber = ({onLoginClick}) => {
                          <div className="mt-2 md:mt-0 relative group">
                               {isLoggedIn ? (
                                    <Link href="/profile">
-                                        <button className="px-4 text-white text-lg rounded-md relative">
+                                        <button className="text-center text-white text-lg rounded-md relative w-full">
                                              Profile
                                              <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-white transition-all duration-300 group-hover:w-full"></span>
                                         </button>
@@ -135,7 +135,7 @@ const Navber = ({onLoginClick}) => {
                               ) : (
                                    <button
                                         onClick={onLoginClick}
-                                        className=" text-start text-white text-lg rounded-md relative w-full">
+                                        className=" text-center text-white text-lg rounded-md relative w-full">
                                         Login
                                         <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-white transition-all duration-300 group-hover:w-full"></span>
                                    </button>

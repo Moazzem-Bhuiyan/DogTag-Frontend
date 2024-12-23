@@ -26,7 +26,7 @@ const Profile = () => {
      };
 
      return (
-          <div className=" w-full max-w-[60%] m-auto grid grid-cols-4 gap-10 justify-center items-center  font-serif ">
+          <div className=" w-full md:max-w-[60%] m-auto md:grid grid-cols-4 gap-10 justify-center items-center  font-serif py-10">
                {/* sideber */}
 
                <div className=" space-y-6 col-span-1">

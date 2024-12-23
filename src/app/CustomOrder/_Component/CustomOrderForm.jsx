@@ -85,7 +85,11 @@ const CustomorderForm = () => {
 
           formData.append("image", data?.image);
 
-          console.log("formdata", formData);
+          // if (previews && previews.length > 0) {
+          //      previews.forEach((file, index) => {
+          //          formData.append(`image_${index + 1}`, file); // Append each file with a unique key
+          //      });
+          //  }
 
           const orderPaymentLoading = toast.loading("Order creating....");
 
@@ -383,12 +387,12 @@ const CustomorderForm = () => {
 
      return (
           <div className="p-8 grid grid-cols-1 xl:grid-cols-2  gap-16 w-full md:max-w-[60%] mx-auto font-serif">
-               <div>
+               <div className=" order-2 md:order-1">
                     <Tabs
                          defaultValue="itemsTag"
                          value={selectTab}
                          onValueChange={setSelectedTab}
-                         className="w-[400px] order-2 md:order-1">
+                         className="w-[400px] order-2 md:order-1 pr-10 md:pr-0 ">
                          <TabsList className="grid w-full grid-cols-2">
                               <TabsTrigger value="itemsTag">
                                    Item Tags
@@ -1019,7 +1023,7 @@ const CustomorderForm = () => {
                     </Tabs>
                </div>
 
-               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8 ">
+               <div className= "order-1 md:order-2 grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8 ">
                     {previews.map((image, index) => (
                          <div
                               key={index}

@@ -382,7 +382,7 @@ const BillingDetails = () => {
         defaultValue="itemsTag"
         value={selectTab}
         onValueChange={setSelectedTab}
-        className="w-[400px] order-2 md:order-1"
+        className="w-[400px] order-2 md:order-1 pr-10 md:pr-0 "
       >
         <TabsList className="grid w-full grid-cols-2">
           <TabsTrigger value="itemsTag">Item Tags</TabsTrigger>
@@ -392,7 +392,7 @@ const BillingDetails = () => {
         <TabsContent value="itemsTag">
           <form
             onSubmit={handleSubmitItemTags(onSubmitItemTags)}
-            className="space-y-4"
+            className="space-y-4  "
           >
             <div>
               <label className="block mb-1">Name</label>
