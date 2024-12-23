@@ -50,10 +50,37 @@ const DogtagPreview = () => {
           ) {
                setBuynow(true);
           } else {
-               
                setBuynow(false);
           }
      }, [formData]);
+
+     const captureElement = async (element) => {
+          // Capture the element and get Base64 data
+          const canvas = await html2canvas(element);
+          const base64Image = canvas.toDataURL("image/png");
+
+          // Convert Base64 to Blob
+          const blob = base64ToBlob(base64Image);
+
+          // Convert Blob to File (optional, if needed)
+          const file = new File([blob], "screenshot.png", {type: "image/png"});
+
+          return file;
+     };
+
+     // Function to convert Base64 to Blob
+     const base64ToBlob = (base64Data) => {
+          // Remove the data:image/png;base64, prefix
+          const base64WithoutPrefix = base64Data.split(",")[1];
+          const binaryString = atob(base64WithoutPrefix);
+          const binaryData = new Uint8Array(binaryString.length);
+
+          for (let i = 0; i < binaryString.length; i++) {
+               binaryData[i] = binaryString.charCodeAt(i);
+          }
+
+          return new Blob([binaryData], {type: "image/png"});
+     };
 
      const handleBuyNowSubmit = async () => {
           try {
@@ -62,13 +89,14 @@ const DogtagPreview = () => {
                const previews = [];
 
                if (dogtag1) {
-                    const canvas1 = await html2canvas(dogtag1);
-                    previews.push(canvas1.toDataURL("image/png"));
+                    const canvas1 = await captureElement(dogtag1);
+                    console.log("canvas1", canvas1);
+                    previews.push(canvas1);
                }
 
                if (dogtag2) {
-                    const canvas2 = await html2canvas(dogtag2);
-                    previews.push(canvas2.toDataURL("image/png"));
+                    const canvas2 = await captureElement(dogtag2);
+                    previews.push(canvas2);
                }
 
                if (previews.length) {
@@ -77,6 +105,7 @@ const DogtagPreview = () => {
 
                     // Navigate to the billing details page
                     router.push("/CustomOrder");
+                    router.refresh();
                } else {
                     Swal.fire({
                          title: "No Data",
@@ -85,6 +114,7 @@ const DogtagPreview = () => {
                     });
                }
           } catch (error) {
+               console.log("error", error);
                Swal.fire({
                     title: "Error",
                     text: "Failed to process the Dog Tags. Please try again later.",

@@ -11,8 +11,13 @@ const ModifyCustomCustomText = () => {
      const [form1Data, setForm1Data] = useState({});
      const [form2Data, setForm2Data] = useState({});
      const {saveFormData} = useFormContext();
-     
+
      const handleGlobalSubmit = () => {
+          Swal.fire({
+               title: "Tag Updated Successfully Please purchase now...",
+               icon: "success",
+               draggable: true,
+          });
 
           //  Swal.fire({
           //                title: "Sorry",

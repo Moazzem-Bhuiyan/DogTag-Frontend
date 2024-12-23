@@ -96,6 +96,8 @@ const BillingDetails = () => {
     formData.append("data", JSON.stringify(formDataWithProductId));
 
     formData.append("image", data?.image);
+    
+    console.log('formdata',formData)
 
     const orderPaymentLoading = toast.loading("Order creating....");
 
@@ -213,7 +215,7 @@ const BillingDetails = () => {
       }
     } catch (error) {
       console.error("Error:", error);
-      toast.error("An error occurred. Please try again.", {
+      toast.error(error, {
         id: orderPaymentLoading,
       });
     }

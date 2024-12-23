@@ -98,6 +98,7 @@ const Hero = () => {
                          <UpdatePassWordForm
                               isOpen={isupdatepasswordOpen}
                               onClose={handleCloseAll}
+                              onLoginClick={isLoginOpen}
                          />
                     </>
                </div>
