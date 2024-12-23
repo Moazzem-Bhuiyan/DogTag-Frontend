@@ -49,12 +49,14 @@ const Navber = ({onLoginClick}) => {
                {/* Desktop Navbar */}
                <div
                     className={` bg-main hidden md:flex flex-col md:flex-row justify-center items-center md:gap-10 lg:gap-40 w-full p- ${
-                         isFixed ? "fixed top-0 left-0 w-full z-50" : "relative"
+                         isFixed
+                              ? "fixed pb-3 top-0 left-0 w-full z-50"
+                              : "relative"
                     }  `}>
                     {Navlink.map((item, index) => (
                          <div
                               key={index}
-                              className="relative mb-2 md:mb-0 group">
+                              className="relative mb-2 md:mb-0 group ">
                               <Link href={item.link}>
                                    <h1 className="text-lg font-medium relative">
                                         {item.title}
@@ -133,7 +135,7 @@ const Navber = ({onLoginClick}) => {
                               ) : (
                                    <button
                                         onClick={onLoginClick}
-                                        className="px-4 text-white text-lg rounded-md relative w-full text-center">
+                                        className=" text-start text-white text-lg rounded-md relative w-full">
                                         Login
                                         <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-white transition-all duration-300 group-hover:w-full"></span>
                                    </button>

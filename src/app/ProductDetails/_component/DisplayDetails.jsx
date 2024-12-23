@@ -102,7 +102,7 @@ const ProductDetails = ({product}) => {
 
                     {/* Right Section - Product Details */}
                     <div className="space-y-5">
-                         <h1 className="text-start text-2xl font-bold">
+                         <h1 className="text-start text-2xl font-bold text-white">
                               {productDetails.name}
                          </h1>
                          <p className="text-2xl font-bold text-white">

@@ -23,7 +23,7 @@ const HomePageProduct = () => {
      // if (error) return <div>{toast.error(error)}</div>;
 
      const containerVariants = {
-          hidden: {opacity: 0, scale: 0.9},   
+          hidden: {opacity: 0, scale: 0.9},
           visible: {
                opacity: 1,
                scale: 1,
@@ -41,7 +41,6 @@ const HomePageProduct = () => {
           visible: {
                opacity: 1,
 
-               
                y: 0,
                transition: {
                     ease: "easeInOut",

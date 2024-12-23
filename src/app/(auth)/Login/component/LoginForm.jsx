@@ -105,10 +105,10 @@ const LoginPage = ({isOpen, onClose, onSignupClick, onForgetPasswordClick}) => {
                                         value: 6,
                                         message: "Password must be at least 6 characters",
                                    },
-                                   pattern: {
-                                        value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
-                                        message: "Password must have at least one uppercase, one lowercase letter, one number, one special character and 8 characters long",
-                                   },
+                                   // pattern: {
+                                   //      value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
+                                   //      message: "Password must have at least one uppercase, one lowercase letter, one number, one special character and 8 characters long",
+                                   // },
                               })}
                               className="border p-2 w-full"
                               placeholder="Enter your password"

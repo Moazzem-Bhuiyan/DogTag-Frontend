@@ -133,13 +133,14 @@ const RegisterModal = ({ isOpen, onClose, onLoginClick }) => {
               type={showPassword ? "password" : "text"}
               {...register("password", {
                 required: "Password is required",
-                pattern: {
-                  value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
-                  message: "Password must have at least one uppercase, one lowercase letter, one number, one special character and 8 characters long",
-             },
+            //     pattern: {
+            //       value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
+            //       message: "Password must have at least one uppercase, one lowercase letter, one number, one special character and 8 characters long",
+            //  },
               })}
               className="border p-2 w-full"
             />
+            
             <EyeIconInverse
               showPassword={showPassword}
               setShowPassword={setShowPassword}
