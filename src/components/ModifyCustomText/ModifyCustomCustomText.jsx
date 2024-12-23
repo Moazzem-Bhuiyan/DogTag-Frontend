@@ -14,14 +14,14 @@ const ModifyCustomCustomText = () => {
      
      const handleGlobalSubmit = () => {
 
-           Swal.fire({
-                         title: "Sorry",
-                         text: "It’s still in development. Please try something else",
-                         icon: "question",
-                    });
+          //  Swal.fire({
+          //                title: "Sorry",
+          //                text: "It’s still in development. Please try something else",
+          //                icon: "question",
+          //           });
 
-          // saveFormData("form1", form1Data);
-          // saveFormData("form2", form2Data);
+          saveFormData("form1", form1Data);
+          saveFormData("form2", form2Data);
      };
      return (
           <div className=" font-serif">
