@@ -33,11 +33,21 @@ const ProductList = ({products}) => {
                variants={containerVariants}
                initial="hidden"
                animate="visible">
-               {products.map((product) => (
-                    <motion.div key={product._id} variants={itemVariants}>
-                         <ProductCard key={product._id} product={product} />
+               {products.length > 0 ? (
+                    products.map((product) => (
+                         <motion.div key={product._id} variants={itemVariants}>
+                              <ProductCard product={product} />
+                         </motion.div>
+                    ))
+               ) : (
+                    <motion.div
+                         className="text-center"
+                         initial={{opacity: 0}}
+                         animate={{opacity: 1}}
+                         transition={{duration: 1.2, ease: "easeInOut"}}>
+                         No featured products available.
                     </motion.div>
-               ))}
+               )}
           </motion.div>
      );
 };
