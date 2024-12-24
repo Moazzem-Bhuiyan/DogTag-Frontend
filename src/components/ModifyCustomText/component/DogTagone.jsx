@@ -62,3 +62,8 @@ const DogTagone = ({onChange}) => {
 };
 
 export default DogTagone;
+
+
+// ekhane input feild jodi empty thake tahole 
+
+// next page er update dogtag button disable thakbe 

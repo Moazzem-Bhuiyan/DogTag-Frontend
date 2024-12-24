@@ -29,6 +29,9 @@ const CustomorderForm = () => {
      const defaultorderType = "custom";
      const orderType = selectTab;
      const [token, setToken] = useState(null);
+     const [quantity, setQuantity] = useState(1);
+     const [totalAmounts, setTotalAmounts] = useState(20);
+     const [totalAmount, setTotalAmount] = useState(totalAmounts);
 
      useEffect(() => {
           if (!Array.isArray(previews) || previews.length === 0) {
@@ -64,8 +67,17 @@ const CustomorderForm = () => {
           reset,
      } = useForm();
 
-     const totalAmount = 20;
-     const quantity = 1;
+     // quantity increment decrements----------------------------------------------------------------
+
+     const handleQuantityChange = (type) => {
+          setQuantity((prev) =>
+               type === "increase" ? prev + 1 : Math.max(prev - 1, 1),
+          );
+     };
+
+     useEffect(() => {
+          setTotalAmount(totalAmounts * quantity); // Update total amount based on quantity
+     }, [quantity, totalAmounts]);
 
      const onSubmitItemTags = async (data) => {
           const finaldata = {...data, orderType};
@@ -78,18 +90,17 @@ const CustomorderForm = () => {
                orderType: defaultorderType,
                quantity: quantity,
                totalAmount: totalAmount,
-               product: "6767ae50e327f44dfd4c71ce",
           };
 
           formData.append("data", JSON.stringify(formdataWithProductDetails));
 
-          formData.append("image", data?.image);
+          // formData.append("image", data?.image);
 
-          // if (previews && previews.length > 0) {
-          //      previews.forEach((file, index) => {
-          //          formData.append(`image_${index + 1}`, file); // Append each file with a unique key
-          //      });
-          //  }
+          if (previews && previews.length > 0) {
+               previews.forEach((file) => {
+                    formData.append("image", file);
+               });
+          }
 
           const orderPaymentLoading = toast.loading("Order creating....");
 
@@ -240,14 +251,17 @@ const CustomorderForm = () => {
                orderType: defaultorderType,
                quantity: quantity,
                totalAmount: totalAmount,
-               product: "6767ae50e327f44dfd4c71ce",
           };
 
           formData.append("data", JSON.stringify(formdataWithProductDetails));
 
-          formData.append("image", data?.image);
+          // formData.append("image", data?.image);
 
-          console.log("formdata", formData);
+          if (previews && previews.length > 0) {
+               previews.forEach((file) => {
+                    formData.append("image", file);
+               });
+          }
 
           const orderPaymentLoading = toast.loading("Order creating....");
 
@@ -388,12 +402,6 @@ const CustomorderForm = () => {
      return (
           <div className="p-8 grid grid-cols-1 xl:grid-cols-2  gap-16 w-full md:max-w-[60%] mx-auto font-serif">
                <div className=" order-2 md:order-1">
-
-
-
-
-
-                    
                     <Tabs
                          defaultValue="itemsTag"
                          value={selectTab}
@@ -476,7 +484,7 @@ const CustomorderForm = () => {
                                    </div>
 
                                    {/* Tag Image */}
-                                   <div>
+                                   {/* <div>
                                         <Label
                                              htmlFor="image"
                                              className="mb-2 block font-semibold text-primary-black">
@@ -562,7 +570,7 @@ const CustomorderForm = () => {
                                                   }
                                              </p>
                                         )}
-                                   </div>
+                                   </div> */}
 
                                    <div>
                                         <label className="block mb-1">
@@ -734,7 +742,7 @@ const CustomorderForm = () => {
                                    </div>
 
                                    {/* Tag Image */}
-                                   <div>
+                                   {/* <div>
                                         <Label
                                              htmlFor="image"
                                              className="mb-2 block font-semibold text-primary-black">
@@ -820,7 +828,7 @@ const CustomorderForm = () => {
                                                   }
                                              </p>
                                         )}
-                                   </div>
+                                   </div> */}
 
                                    <div>
                                         <label className="block mb-1">
@@ -1029,20 +1037,49 @@ const CustomorderForm = () => {
                     </Tabs>
                </div>
 
-               <div className= "order-1 md:order-2 grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8 ">
-                    {previews.map((image, index) => (
-                         <div
-                              key={index}
-                              className="border h-[150px] w-full flex justify-center">
-                              <Image
-                                   className=" w-full h-[150px] "
-                                   width={1200}
-                                   height={1200}
-                                   src={URL.createObjectURL(image)}
-                                   alt={`Dog Tag ${index + 1}`}
-                              />
+               <div className="order-1 md:order-2">
+                    <div className=" grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8 ">
+                         {previews.map((image, index) => (
+                              <div
+                                   key={index}
+                                   className="border h-[150px] w-full flex justify-center">
+                                   <Image
+                                        className=" w-full h-[150px] "
+                                        width={1200}
+                                        height={1200}
+                                        src={URL.createObjectURL(image)}
+                                        alt={`Dog Tag ${index + 1}`}
+                                   />
+                              </div>
+                         ))}
+                    </div>
+
+                    {/* increment decrement butyton */}
+                    <div className="flex items-center space-x-4 pt-10">
+                         {/* Quantity Selector */}
+                         <div className="flex items-center border border-white w-[124px] h-10">
+                              <button
+                                   aria-label="Decrease quantity"
+                                   className="px-4 w-full h-full border-r text-white hover:bg-white hover:text-black"
+                                   onClick={() =>
+                                        handleQuantityChange("decrease")
+                                   }>
+                                   -
+                              </button>
+                              <span className="text-xl px-3">{quantity}</span>
+                              <button
+                                   aria-label="Increase quantity"
+                                   className="px-4 w-full h-full border-l text-white hover:bg-white hover:text-black"
+                                   onClick={() =>
+                                        handleQuantityChange("increase")
+                                   }>
+                                   +
+                              </button>
                          </div>
-                    ))}
+                         <div>
+                              <h1> Price : £ {totalAmount}</h1>
+                         </div>
+                    </div>
                </div>
           </div>
      );
